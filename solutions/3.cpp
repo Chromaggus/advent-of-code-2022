@@ -38,11 +38,9 @@ int main() {
             std::set<char> third_line_set(begin(group[2]), end(group[2]));
 
             std::set<char> common_letters;
-            for (char c : first_line_set) {
-                if (second_line_set.find(c) != second_line_set.end()) {
-                    common_letters.insert(c);
-                }
-            }
+            set_intersection(first_line_set.begin(), first_line_set.end(),
+                            second_line_set.begin(), second_line_set.end(),
+                            std::inserter(common_letters, common_letters.begin()));
 
             for (char c : common_letters) {
                 if (third_line_set.find(c) != third_line_set.end()) {
